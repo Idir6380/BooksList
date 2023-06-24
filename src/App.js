@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import BookCreate from "./components/BookCreate";
+import { useState } from "react";
+import BookList from "./components/BookList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [books, setBooks] = useState([]);
+    const hundleCreate = bookTitle => {
+        const book = {
+            id: Math.round(Math.random() * 9999),
+            title: bookTitle
+        };
 
-export default App;
+        setBooks([...books, book]);
+    };
+    const hundleDelete = (id) => {
+        setBooks(books.filter(book => {
+            return book.id !== id;
+        }))
+    };
+    const hundleEdit = (id, title) => {
+        setBooks(books.map(book => {
+            if (book.id === id) {
+                return { ...book, title: title };
+            }
+            return book;
+        }))
+    };
+    return (
+
+        <div
+            className="app">
+            <h1>Reading List</h1>
+            <BookList onDelete={hundleDelete} books={books} onEdit={hundleEdit} />
+            <BookCreate onCreate={hundleCreate} />
+        </div>
+    );
+};
+export default App; 
