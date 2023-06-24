@@ -17,9 +17,17 @@ const App = () => {
             return book.id !== id;
         }))
     };
+    const hundleEdit = (id, title) => {
+        setBooks(books.map(book => {
+            if (book.id === id) {
+                return { ...book, title: title };
+            }
+            return book;
+        }))
+    };
     return (
         <div className="app">
-            <BookList onDelete={hundleDelete} books={books} />
+            <BookList onDelete={hundleDelete} books={books} onEdit={hundleEdit} />
             <div>{books.length}</div>
             <BookCreate onCreate={hundleCreate} />
         </div>
