@@ -7,8 +7,10 @@ function BookCreate({ onCreate }) {
     };
     const hundleSubmit = e => {
         e.preventDefault();
-        onCreate(title);
-        setTitle('');
+        if (title !== "") {
+            onCreate(title);
+            setTitle('');
+        }
     }
     return (
         <div className="book-create">

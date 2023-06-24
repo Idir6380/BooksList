@@ -9,15 +9,24 @@ function BookShow({ book, onDelete, onEdit }) {
     const hundleEditClick = () => {
         setShowEdit(!showEdit);
     };
+    const hundleSubmit = (id, newTitle) => {
+        setShowEdit(false);
+        onEdit(id, newTitle);
+    };
+
 
     let content = <h3>{book.title}</h3>
 
     if (showEdit) {
-        content = <BookEdit book={book} onEdit={onEdit} />
+        content = <BookEdit onSubmit={hundleSubmit} book={book} />
     }
     return (
+
         <div className="book-show">
-            {content}
+            <img src={`https://picsum.photos/seed/${book.id}/300/200`} alt="" />
+            <div>
+                {content}
+            </div>
             <div className="actions">
                 <button className="edit" onClick={hundleEditClick}>
                     edit

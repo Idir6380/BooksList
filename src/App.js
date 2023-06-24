@@ -26,9 +26,11 @@ const App = () => {
         }))
     };
     return (
-        <div className="app">
+
+        <div
+            className="app">
+            <h1>Reading List</h1>
             <BookList onDelete={hundleDelete} books={books} onEdit={hundleEdit} />
-            <div>{books.length}</div>
             <BookCreate onCreate={hundleCreate} />
         </div>
     );
