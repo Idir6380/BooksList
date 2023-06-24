@@ -12,9 +12,14 @@ const App = () => {
 
         setBooks([...books, book]);
     };
+    const hundleDelete = (id) => {
+        setBooks(books.filter(book => {
+            return book.id !== id;
+        }))
+    };
     return (
         <div className="app">
-            <BookList books={books} />
+            <BookList onDelete={hundleDelete} books={books} />
             <div>{books.length}</div>
             <BookCreate onCreate={hundleCreate} />
         </div>
