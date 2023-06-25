@@ -1,7 +1,16 @@
 {
   "books": [
     {
-      "title": "idir"
+      "title": "La terre et le sang",
+      "id": 1
+    },
+    {
+      "title": "harry potter",
+      "id": 2
+    },
+    {
+      "bookTitle": "the lord of the ring",
+      "id": 3
     }
   ]
 }
