@@ -9,19 +9,13 @@ const App = () => {
         const response = await axios.get('http://127.0.0.1:3001/books');
         setBooks(response.data);
     };
-
-
-
-
-
-
     useEffect(() => {
         fetchBooks();
     }, []);
 
     const hundleCreate = async (bookTitle) => {
-        const response = axios.post('http://127.0.0.1:3001/books', {
-            bookTitle,
+        const response = await axios.post('http://127.0.0.1:3001/books', {
+            title: bookTitle,
         });
         const updatedBooks = [...books, response.data];
         setBooks(updatedBooks);
